@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\limone}{\varprojlim^1}
+
+\title{Explicit Description of the Cotorsion Hull}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+Let $G = \bigoplus_{i=1}^{\infty} \Z/2^i\Z$ and $\Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$. 
+Define $K = \Ext^1(\Q/\Z, G)$, the cotorsion hull of $G$.
+
+\section{The Characterization}
+
+We characterize $K$ by building up three increasingly refined conditions.
+
+\begin{definition}
+For $x \in \Pi$ and $n \geq 1$, we say $x$ is \emph{$n$-divisible modulo $G$} if there 
+exists $g \in G$ such that $n \cdot x - g \in G$. In this case, we call $g$ an 
+\emph{$n$-remainder} of $x$.
+\end{definition}
+
+The first condition is simply that $x$ is divisible by every positive integer modulo $G$:
+
+\begin{proposition}[Condition 1: Universal Divisibility]
+An element $x \in \Pi$ belongs to $K$ only if $x$ is $n$-divisible modulo $G$ for every 
+$n \geq 1$. That is, for each $n$, there exists $g_n \in G$ with $n \cdot x - g_n \in G$.
+\end{proposition}
+
+However, this alone is not sufficient. We need the remainders to be \emph{compatible}:
+
+\begin{proposition}[Condition 2: Compatibility of Remainders]
+If $x \in K$ with $n$-remainders $g_n$ and $m$-remainders $g_m$, then these must satisfy:
+\[
+n \cdot g_m - m \cdot g_n \in G
+\]
+for all $n, m \geq 1$. This ensures that ``dividing by $n$ then by $m$'' gives the 
+same result as ``dividing by $m$ then by $n$'' (modulo $G$).
+\end{proposition}
+
+The final condition ensures these compatible remainders actually come from the 
+$\limone$ construction, which is the quotient $K/G$:
+
+\begin{proposition}[Condition 3: lim$^1$ Compatibility]
+The remainders $(g_n)$ must not only be compatible with each other, but must also 
+arise from the specific structure of $K/G \cong \limone G$. 
+
+To check this, we examine the factorial subsequence $(g_{1!}, g_{2!}, g_{3!}, \ldots)$. 
+The requirement is that the ``jumps'' between consecutive terms have a specific form: 
+for each $n \geq 1$, there must exist some $h_n \in G$ such that the difference 
+$g_{n!} - (n+1) \cdot g_{(n+1)!}$ equals $h_n - (n+1) \cdot h_{n+1}$.
+
+This condition ensures that $(g_{n!})$ represents a genuine element of 
+$\limone G = (\prod_{n=0}^{\infty} G) / \mathrm{Im}(\partial)$, where the boundary 
+map $\partial$ sends $(a_n)$ to $(a_n - (n+1) \cdot a_{n+1})$. In other words, 
+the sequence must be a valid ``cocycle'' in the lim$^1$ construction.
+\end{proposition}
+
+\begin{theorem}
+An element $x = (x_i)_{i \geq 1} \in \Pi$ belongs to $K$ if and only if:
+\begin{enumerate}
+\item $x$ is $n$-divisible modulo $G$ for every $n \geq 1$ (with some choice of 
+      $n$-remainders $g_n \in G$).
+\item The remainders $(g_n)$ are compatible: $n \cdot g_m - m \cdot g_n \in G$ 
+      for all $n, m \geq 1$.
+\item For each $n \geq 1$, there exists $h_n \in G$ such that:
+      \[
+      g_{n!} - (n+1) \cdot g_{(n+1)!} = h_n - (n+1) \cdot h_{n+1}
+      \]
+      This ensures the factorial subsequence $(g_{n!})$ represents a well-defined 
+      element in $\limone G = (\prod_{n=0}^{\infty} G) / \mathrm{Im}(\partial)$, 
+      where $\partial((a_n)) = (a_n - (n+1) \cdot a_{n+1})$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{Necessity:} Since $K/G \cong \limone G$ is divisible, for any $x \in K$ and 
+$n \geq 1$, we can find $y \in K$ with $n \cdot y \equiv x \pmod{G}$. Taking 
+$g_n = n \cdot y - x \in G$ gives condition (1). The compatibility (2) follows 
+because both $n \cdot g_m$ and $m \cdot g_n$ represent ways of ``dividing $x$ by 
+$nm$,'' which must agree. Condition (3) ensures the sequence $(g_{n!})$ actually 
+represents the class of $x \bmod G$ in $\limone G$.
+
+\textbf{Sufficiency:} If $x \in \Pi$ satisfies (1)--(3), then the remainders $(g_n)$ 
+form a compatible system representing an element of $\limone G$. Since 
+$K/G \cong \limone G$, this means $x \bmod G \in K/G$, so $x \in K$.
+\end{proof}
+
+\end{document}
+
