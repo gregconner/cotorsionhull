@@ -69,18 +69,16 @@ Even if remainders are compatible (satisfying Condition 2), they might not corre
 to a real element of $K$. We need one more check to ensure they ``fit together'' 
 in the way that elements of $K/G$ must.
 
-To verify this, we look at the factorial subsequence of remainders: 
-$(g_{1!}, g_{2!}, g_{3!}, g_{4!}, \ldots)$.
-
-The requirement is that the ``gaps'' or ``jumps'' between consecutive terms follow 
-a specific pattern. More precisely, for each $n \geq 1$, there must exist some 
-$h_n \in G$ such that:
+To verify this, define the sequence $g'_n = g_{n!}$ for $n \geq 1$, which extracts 
+the factorial subsequence of remainders. The requirement is that the ``gaps'' or 
+``jumps'' between consecutive terms follow a specific pattern. More precisely, 
+for each $n \geq 1$, there must exist some $h_n \in G$ such that:
 \[
-g_{n!} - (n+1) \cdot g_{(n+1)!} = h_n - (n+1) \cdot h_{n+1}
+g'_n - (n+1) \cdot g'_{n+1} = h_n - (n+1) \cdot h_{n+1}
 \]
 Equivalently, rearranging terms:
 \[
-g_{n!} - h_n = (n+1) \cdot (g_{(n+1)!} - h_{n+1})
+g'_n - h_n = (n+1) \cdot (g'_{n+1} - h_{n+1})
 \]
 
 \textbf{What this means:} The quotient $K/G$ has a very specific structure (called 
@@ -96,13 +94,15 @@ An element $x = (x_i)_{i \geq 1} \in \Pi$ belongs to $K$ if and only if:
       $n$-remainders $g_n \in G$).
 \item The remainders $(g_n)$ are compatible: $n \cdot g_m - m \cdot g_n \in G$ 
       for all $n, m \geq 1$.
-\item For each $n \geq 1$, there exists a sequence $(h_k)_{k \geq n}$ with $h_k \in G$ 
-      such that:
+\item Define $g'_n = g_{n!}$ for $n \geq 1$. For each $n \geq 1$, there exists a 
+      sequence $(h_k)_{k \geq n}$ with $h_k \in G$ such that:
       \[
-      g_{n!} - (n+1) \cdot g_{(n+1)!} = h_n - (n+1) \cdot h_{n+1}
+      g'_n - (n+1) \cdot g'_{n+1} = h_n - (n+1) \cdot h_{n+1}
       \]
-      This ensures the factorial subsequence $(g_{n!})$ represents a well-defined 
-      element in $\limone G = (\prod_{n=0}^{\infty} G) / \mathrm{Im}(\partial)$, 
+      Equivalently: $g'_n - h_n = (n+1) \cdot (g'_{n+1} - h_{n+1})$.
+      
+      This ensures the sequence $(g'_n)$ represents a well-defined element in 
+      $\limone G = (\prod_{n=0}^{\infty} G) / \mathrm{Im}(\partial)$, 
       where $\partial((a_n)) = (a_n - (n+1) \cdot a_{n+1})$.
 \end{enumerate}
 \end{theorem}
@@ -117,8 +117,8 @@ Setting $g_n = n \cdot y - x \in G$ gives us condition (1).
 The compatibility condition (2) must hold because if we divide $x$ by $nm$ in two 
 different orders, we must get the same result. 
 
-Condition (3) ensures that the remainders $(g_{n!})$ actually represent the correct 
-element of $\limone G$ that corresponds to $x \bmod G$.
+Condition (3) ensures that the sequence $(g'_n) = (g_{n!})$ actually represents 
+the correct element of $\limone G$ that corresponds to $x \bmod G$.
 
 \textbf{Why these conditions are sufficient:} 
 If $x \in \Pi$ satisfies all three conditions, then the remainders $(g_n)$ form a 
