@@ -71,12 +71,12 @@ in the way that elements of $K/G$ must.
 
 To verify this, define the sequence $\hat{g}_n = g_{n!}$ for $n \geq 1$, which extracts 
 the factorial subsequence of remainders. The requirement is that there exists 
-$h_1 \in G$ such that for all $n \geq 1$:
+a sequence $(h_n)_{n \geq 1}$ with $h_n \in G$ such that for all $n \geq 1$:
 \[
 \hat{g}_1 - h_1 = n! \cdot (\hat{g}_n - h_n)
 \]
-where $h_n \in G$ is determined by this relation. This means the difference 
-$\hat{g}_1 - h_1$ is divisible by $n!$ for all $n$, with quotient $\hat{g}_n - h_n$.
+This means the difference $\hat{g}_1 - h_1$ is divisible by $n!$ for all $n$, 
+with quotient $\hat{g}_n - h_n$.
 
 \textbf{What this means:} The quotient $K/G$ has a very specific structure (called 
 $\limone G$). This condition ensures that our sequence of remainders actually 
@@ -91,13 +91,12 @@ An element $x = (x_i)_{i \geq 1} \in \Pi$ belongs to $K$ if and only if:
       $n$-remainders $g_n \in G$).
 \item The remainders $(g_n)$ are compatible: $n \cdot g_m - m \cdot g_n \in G$ 
       for all $n, m \geq 1$.
-\item Define $\hat{g}_n = g_{n!}$ for $n \geq 1$. There exists $h_1 \in G$ such that 
-      for all $n \geq 1$:
+\item Define $\hat{g}_n = g_{n!}$ for $n \geq 1$. There exists a sequence $(h_n)_{n \geq 1}$ 
+      with $h_n \in G$ such that for all $n \geq 1$:
       \[
       \hat{g}_1 - h_1 = n! \cdot (\hat{g}_n - h_n)
       \]
-      where $h_n \in G$ is determined by this relation. This ensures the sequence 
-      $(\hat{g}_n)$ represents a well-defined element in 
+      This ensures the sequence $(\hat{g}_n)$ represents a well-defined element in 
       $\limone G = (\prod_{n=0}^{\infty} G) / \mathrm{Im}(\partial)$, 
       where $\partial((a_n)) = (a_n - (n+1) \cdot a_{n+1})$.
 \end{enumerate}
