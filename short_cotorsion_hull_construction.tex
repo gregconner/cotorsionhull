@@ -20,8 +20,7 @@
 \begin{document}
 \maketitle
 
-Let $G = \bigoplus_{i=1}^{\infty} \Z/2^i\Z$ (the direct sum of cyclic 2-groups) and 
-$\Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$ (the full product). 
+Let $G = \bigoplus_{i=1}^{\infty} \Z/2^i\Z$ and $\Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$. 
 Define $K = \Ext^1(\Q/\Z, G)$, the cotorsion hull of $G$.
 
 Our goal is to characterize exactly which elements of $\Pi$ belong to $K$. 
@@ -33,14 +32,8 @@ if we can ``almost divide $x$ by $n$'' in the following sense: there exists some
 $g \in G$ such that when we compute $n \cdot x - g$, the result lies entirely in $G$ 
 (has only finitely many nonzero coordinates). 
 
-We call $g$ an \emph{$n$-remainder} of $x$. Think of it as the ``leftover'' when trying 
-to divide $x$ by $n$, but we're allowed to adjust by an element of $G$ to make it work.
+We call $g$ an \emph{$n$-remainder} of $x$.
 \end{definition}
-
-\begin{example}
-If $x \in G$ itself, then for any $n$, we can take $g = 0$ and have $n \cdot x - 0 = n \cdot x \in G$, 
-so elements of $G$ are $n$-divisible modulo $G$ for all $n$.
-\end{example}
 
 The first condition requires that $x$ can be divided by \emph{every} positive integer (modulo $G$):
 
@@ -89,8 +82,7 @@ g_{n!} - (n+1) \cdot g_{(n+1)!} = h_n - (n+1) \cdot h_{n+1}
 \textbf{What this means:} The quotient $K/G$ has a very specific structure (called 
 $\limone G$). This condition ensures that our sequence of remainders actually 
 represents a valid element in that structure, not just any arbitrary compatible 
-sequence. It's like checking that a puzzle piece not only fits with its neighbors, 
-but also belongs to the correct puzzle.
+sequence.
 \end{proposition}
 
 \begin{theorem}
