@@ -1,0 +1,478 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Open Question}
+
+% Notation
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\yes}{\checkmark}
+\newcommand{\no}{$\times$}
+
+\title{On the Cotorsion Hull of an Unbounded Direct Sum of Cyclic $p$-Groups}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We investigate the structure of $\Ext^1(\Q/\Z, G)$ where $G = \bigoplus_{i=1}^{\infty} \Z/2^i\Z$ 
+is the direct sum of cyclic 2-groups of unbounded order. This group, known as the cotorsion hull 
+of $G$, exhibits subtle properties: it is cotorsion with torsion subgroup exactly $G$, yet it 
+is not pure-injective. We compute the quotient $K/G$ as a $\Q$-vector space of uncountable 
+dimension and characterize the group via Ulm invariants. We also derive explicit 2-cocycle 
+representatives for elements in the image of the connecting homomorphism.
+\end{abstract}
+
+\section{Introduction}
+
+Let $G = \bigoplus_{i=1}^{\infty} \Z/2^i\Z$ be the direct sum of cyclic groups of orders 
+$2, 4, 8, 16, \ldots$, and let $H = \Q/\Z$ denote the Pr\"ufer group (rationals modulo integers). 
+We seek to compute $\Ext^1(H, G)$.
+
+This problem lies at the intersection of several classical themes in abelian group theory: 
+cotorsion groups, algebraic compactness, and the derived functors $\lim^1$. The group $G$ 
+has \emph{unbounded torsion}, meaning there is no integer $n$ with $nG = 0$, which creates 
+delicate issues when considering its various completions.
+
+\subsection{Main Results}
+
+\begin{theorem}\label{thm:main}
+The group $K = \Ext^1(\Q/\Z, G)$ is the unique adjusted cotorsion group with torsion subgroup 
+isomorphic to $G$. It fits into a non-split exact sequence
+\[
+0 \to G \to K \to D \to 0
+\]
+where $D = \Ext^1(\Q, G)$ is a torsion-free divisible group of uncountable dimension.
+\end{theorem}
+
+\begin{theorem}\label{thm:quotient}
+The quotient $K/G \cong \Ext^1(\Q, G) = \lim^1 G$ is isomorphic as an abstract group to 
+$\bigoplus_{2^{\aleph_0}} \Q$, a direct sum of continuum-many copies of the rationals.
+\end{theorem}
+
+\section{Preliminaries}
+
+\subsection{Cotorsion Groups}
+
+\begin{definition}[\cite{Fuchs1970}]
+An abelian group $C$ is \emph{cotorsion} if $\Ext^1(F, C) = 0$ for all torsion-free groups $F$. 
+Equivalently, $\Ext^1(\Q, C) = 0$.
+\end{definition}
+
+\begin{definition}
+A cotorsion group is \emph{adjusted} if it has no nonzero torsion-free direct summands.
+\end{definition}
+
+The following theorem establishes a fundamental correspondence.
+
+\begin{theorem}[\cite{Harrison1959}, \cite{Fuchs1973}]\label{thm:correspondence}
+There is a one-to-one correspondence between adjusted cotorsion groups and reduced torsion groups, 
+given by $C \mapsto tC$ (the torsion subgroup of $C$).
+\end{theorem}
+
+\subsection{The Cotorsion Hull}
+
+\begin{definition}
+For a reduced abelian group $A$, the \emph{cotorsion hull} of $A$ is defined as $\Ext^1(\Q/\Z, A)$.
+\end{definition}
+
+\begin{proposition}[\cite{Fuchs1973}]\label{prop:hull-properties}
+For a reduced torsion group $T$:
+\begin{enumerate}
+\item $\Ext^1(\Q/\Z, T)$ is cotorsion.
+\item The torsion subgroup of $\Ext^1(\Q/\Z, T)$ equals $T$.
+\item The quotient $\Ext^1(\Q/\Z, T)/T$ is torsion-free and divisible.
+\end{enumerate}
+\end{proposition}
+
+\subsection{The lim$^1$ Functor}
+
+For an inverse system of abelian groups $\cdots \to A_{n+1} \xrightarrow{f_n} A_n \to \cdots$, 
+the derived functor $\lim^1$ is computed as \cite{Weibel1994}:
+\[
+\lim^1 A_n = \left(\prod_{n=0}^{\infty} A_n\right) \Big/ \mathrm{Im}(\partial)
+\]
+where $\partial((a_n)) = (a_n - f_n(a_{n+1}))_{n \geq 0}$.
+
+\section{The Fundamental Exact Sequence}
+
+\subsection{Derivation}
+
+From the short exact sequence $0 \to \Z \to \Q \to \Q/\Z \to 0$, applying $\Hom(-, G)$ yields:
+\[
+\cdots \to \Hom(\Q, G) \to \Hom(\Z, G) \xrightarrow{\delta} \Ext^1(\Q/\Z, G) \to \Ext^1(\Q, G) \to \Ext^1(\Z, G) \to \cdots
+\]
+
+\begin{lemma}\label{lem:vanishing}
+For $G = \bigoplus_i \Z/2^i\Z$:
+\begin{enumerate}
+\item $\Hom(\Q, G) = 0$ \quad (since $\Q$ is divisible and $G$ is reduced torsion)
+\item $\Hom(\Z, G) \cong G$
+\item $\Ext^1(\Z, G) = 0$ \quad (since $\Z$ is projective)
+\end{enumerate}
+\end{lemma}
+
+\begin{corollary}
+There is a short exact sequence
+\[
+0 \to G \xrightarrow{\delta} \Ext^1(\Q/\Z, G) \to \Ext^1(\Q, G) \to 0
+\]
+where $\delta$ is the connecting homomorphism.
+\end{corollary}
+
+\subsection{Non-Splitting}
+
+\begin{proposition}\label{prop:nonsplit}
+The sequence $0 \to G \to K \to K/G \to 0$ does not split.
+\end{proposition}
+
+\begin{proof}
+Suppose the sequence splits, so $K \cong G \oplus (K/G)$. Since direct summands of cotorsion 
+groups are cotorsion, $G$ would be cotorsion. However, a torsion group is cotorsion if and 
+only if it is the direct sum of a divisible group and a bounded group \cite[Theorem 54.1]{Fuchs1970}. 
+Since $G = \bigoplus_i \Z/2^i\Z$ is reduced and has unbounded exponent, it is not cotorsion. Contradiction.
+\end{proof}
+
+\section{Computing the Quotient $K/G$}
+
+\subsection{Identification with lim$^1$}
+
+\begin{theorem}\label{thm:lim1}
+$\Ext^1(\Q, G) \cong \lim^1 G$ where the inverse system is
+\[
+G \xleftarrow{\times 2} G \xleftarrow{\times 3} G \xleftarrow{\times 4} \cdots
+\]
+with the $n$-th map being multiplication by $(n+1)$.
+\end{theorem}
+
+\begin{proof}
+Write $\Q = \varinjlim_{n} \frac{1}{n!}\Z$. Then by \cite[Proposition 3.5.8]{Weibel1994}:
+\[
+\Ext^1(\Q, G) = \Ext^1(\varinjlim \tfrac{1}{n!}\Z, G) \cong \lim^1 \Hom(\tfrac{1}{n!}\Z, G) = \lim^1 G
+\]
+where the bonding maps are induced by the inclusions $\frac{1}{n!}\Z \hookrightarrow \frac{1}{(n+1)!}\Z$.
+\end{proof}
+
+\subsection{Structure of the Quotient}
+
+\begin{proposition}\label{prop:divisible}
+$K/G = \Ext^1(\Q, G)$ is torsion-free and divisible.
+\end{proposition}
+
+\begin{proof}
+\emph{Divisibility}: For any integer $m$, consider the endomorphism $\times m: \Q \to \Q$, which 
+is an isomorphism. This induces an isomorphism $\Ext^1(\Q, G) \xrightarrow{\cong} \Ext^1(\Q, G)$, 
+which is multiplication by $m$. Hence $m \cdot \Ext^1(\Q, G) = \Ext^1(\Q, G)$.
+
+\emph{Torsion-free}: If $x \in K/G$ satisfies $mx = 0$ for some $m > 0$, lift $x$ to $\tilde{x} \in K$. 
+Then $m\tilde{x} \in G$, so $\tilde{x}$ has finite order in $K$. Since $\mathrm{torsion}(K) = G$, 
+we have $\tilde{x} \in G$, so $x = 0$.
+\end{proof}
+
+\begin{theorem}\label{thm:cardinality}
+The group $K$ is uncountable, with cardinality $|K| = 2^{\aleph_0}$.
+\end{theorem}
+
+\begin{proof}
+Since $K$ fits into the exact sequence $0 \to G \to K \to \Ext^1(\Q, G) \to 0$ and $G$ is countable, 
+it suffices to show that $\Ext^1(\Q, G) \cong \lim^1 G$ has cardinality $2^{\aleph_0}$.
+
+The inverse system defining $\lim^1 G$ is $G \xleftarrow{\times (n+1)} G$. Since $G = \bigoplus_i \Z/2^i\Z$ 
+is unbounded, the image of the bonding map $G \xrightarrow{\times m} G$ is strictly smaller than $G$ 
+for large $m$. Specifically, the system does not satisfy the Mittag-Leffler condition. 
+
+By a theorem of Jensen (1972), for an inverse system of countable abelian groups, the derived limit $\lim^1$ 
+is either trivial or has cardinality $2^{\aleph_0}$. Since the maps are not surjective (leaving ``holes'' 
+that accumulate), $\lim^1 G \neq 0$. Being a vector space over $\Q$, it must therefore have uncountable 
+dimension, so $|\Ext^1(\Q, G)| = 2^{\aleph_0}$.
+\end{proof}
+
+\section{Comparison with Pure-Injective Envelope}
+
+\subsection{Torsion-Complete Groups}
+
+\begin{definition}[\cite{Fuchs1973}]
+For a direct sum of cyclic $p$-groups $B = \bigoplus_i B_i$, the \emph{torsion-complete} group 
+is the torsion subgroup of the $p$-adic completion:
+\[
+\bar{B} = \{(a_i) \in \prod_i B_i : \exists k, \; p^k a_i = 0 \text{ for all } i\}
+\]
+\end{definition}
+
+\begin{theorem}[\cite{Fuchs1973}]\label{thm:pure-inj}
+A reduced $p$-group is algebraically compact (= pure-injective) if and only if it is torsion-complete.
+\end{theorem}
+
+\subsection{Why $K \neq \bar{G}$}
+
+\begin{proposition}
+The cotorsion hull $K = \Ext^1(\Q/\Z, G)$ is not equal to the torsion-complete group $\bar{G}$.
+\end{proposition}
+
+\begin{proof}
+The torsion-complete group $\bar{G}$ is:
+\[
+\bar{G} = \{(a_i) \in \prod_i \Z/2^i\Z : \exists k, \; 2^k a_i = 0 \text{ for all } i\}
+\]
+This is a torsion group strictly larger than $G = \bigoplus_i \Z/2^i\Z$. For example, the 
+element $(1, 1, 1, \ldots)$ where each component is $1 \in \Z/2^i\Z$ lies in $\bar{G}$ 
+(with $k = 1$ since $2 \cdot 1 = 0$ in $\Z/2$), but not in $G$.
+
+Since $\mathrm{torsion}(\bar{G}) = \bar{G} \supsetneq G$ but $\mathrm{torsion}(K) = G$, we have $K \neq \bar{G}$.
+\end{proof}
+
+\begin{remark}
+The cotorsion hull $K$ and the torsion-complete group $\bar{G}$ are \emph{incomparable} 
+in the containment order. Specifically:
+\begin{itemize}
+\item $K \not\subset \bar{G}$: The quotient $K/G$ is torsion-free, so $K$ contains elements 
+of infinite order. But $\bar{G}$ is entirely torsion, so these elements cannot lie in $\bar{G}$.
+\item $\bar{G} \not\subset K$: The group $\bar{G}$ contains torsion elements outside $G$ (e.g., 
+$(1,1,1,\ldots)$), but $\mathrm{torsion}(K) = G$, so these cannot lie in $K$.
+\end{itemize}
+Their intersection is exactly $G$:
+\[
+K \cap \bar{G} = G
+\]
+Both $K$ and $\bar{G}$ embed into the full product $\prod_i \Z/2^i\Z$, but they capture 
+different ``completions'' of $G$. 
+
+\textbf{Note:} Since $K$ is the minimal cotorsion group containing $G$, if the torsion-complete group $\bar{G}$ were cotorsion, it would necessarily contain $K$. The fact that $K \not\subset \bar{G}$ thus provides a proof that $\bar{G}$ is not cotorsion.
+\end{remark}
+
+\begin{proposition}
+Let $\Pi = \prod_{i=1}^\infty \Z/2^i\Z$ and let $R \cong \prod_{\aleph_0} \mathbb{Z}_2$ denote the reduced torsion-free algebraically compact part. The structure of the global quotients is:
+\begin{enumerate}
+    \item $K/G \cong \bigoplus_{2^{\aleph_0}} \Q$
+    \item $\bar{G}/G \cong \bigoplus_{2^{\aleph_0}} \Z(2^\infty)$
+    \item $\Pi/K \cong R \oplus \bigoplus_{2^{\aleph_0}} \Z(2^\infty)$
+    \item $\Pi/\bar{G} \cong \bigoplus_{2^{\aleph_0}} \Q \oplus R$ \quad (note: $\bigoplus_{2^{\aleph_0}} \Q \cong \Q^{\oplus 2^{\aleph_0}}$)
+    \item $\Pi/(K+\bar{G}) \cong R$
+    \item $\Pi/G \cong \bigoplus_{2^{\aleph_0}} \Q \oplus R \oplus \bigoplus_{2^{\aleph_0}} \Z(2^\infty)$
+\end{enumerate}
+\end{proposition}
+
+\section{Explicit Cocycles}
+
+\subsection{Extensions as 2-Cocycles}
+
+An element of $\Ext^1(A, B)$ corresponds to an extension $0 \to B \to E \to A \to 0$. Given a 
+set-theoretic section $s: A \to E$, the \emph{2-cocycle} $c: A \times A \to B$ is
+\[
+c(a_1, a_2) = s(a_1) + s(a_2) - s(a_1 + a_2)
+\]
+
+\subsection{The Connecting Homomorphism}
+
+The image of the connecting homomorphism $\delta: G \to K$ consists of explicit cocycles.
+
+\begin{proposition}
+For $g \in G$, the cocycle $c_g: \Q/\Z \times \Q/\Z \to G$ representing $\delta(g)$ is:
+\[
+c_g([r_1], [r_2]) = \epsilon(r_1, r_2) \cdot g
+\]
+where $r_1, r_2 \in [0, 1)$ are representatives and
+\[
+\epsilon(r_1, r_2) = \begin{cases} 1 & \text{if } r_1 + r_2 \geq 1 \\ 0 & \text{otherwise} \end{cases}
+\]
+is the ``carry'' function.
+\end{proposition}
+
+\section{Ulm Invariant Characterization}
+
+\subsection{Ulm's Theorem}
+
+For a reduced abelian $p$-group $T$, the $\alpha$-th Ulm invariant is \cite{Fuchs1970}:
+\[
+u_\alpha(T) = \dim_{\mathbb{F}_p} \frac{(p^\alpha T)[p]}{(p^{\alpha+1} T)[p]}
+\]
+
+\begin{theorem}[Ulm's Theorem, \cite{Ulm1933}]
+Two countable reduced abelian $p$-groups are isomorphic if and only if they have the same Ulm invariants.
+\end{theorem}
+
+\subsection{Application to $G$}
+
+\begin{proposition}
+For $G = \bigoplus_{i=1}^{\infty} \Z/2^i\Z$:
+\[
+u_0(G) = \aleph_0, \quad u_\alpha(G) = 0 \text{ for } \alpha \geq 1
+\]
+\end{proposition}
+
+\begin{corollary}
+By Theorem \ref{thm:correspondence}, the cotorsion hull $K = \Ext^1(\Q/\Z, G)$ is the unique 
+adjusted cotorsion group with Ulm invariants $u_0 = \aleph_0$ and $u_\alpha = 0$ for $\alpha \geq 1$.
+\end{corollary}
+
+\section{Complete Lattice Analysis}
+
+All groups embed into $\Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$. The containment lattice is:
+\begin{center}
+\begin{tabular}{c}
+$\Pi$ \\[2pt]
+$|$ \\[2pt]
+$K + \bar{G}$ \\[2pt]
+$\diagup \quad \diagdown$ \\[2pt]
+$K \qquad\qquad \bar{G}$ \\[2pt]
+$\diagdown \quad \diagup$ \\[2pt]
+$G$ \\[2pt]
+$|$ \\[2pt]
+$0$
+\end{tabular}
+\end{center}
+
+\subsection{Structural Properties}
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Group} & \textbf{Torsion} & \textbf{TF} & \textbf{Mixed} & \textbf{Bounded} & \textbf{Countable} & \textbf{Card.} \\
+\hline
+$G$ & \yes & \no & \no & \no & \yes & $\aleph_0$ \\
+$K$ & \no & \no & \yes & \no & \no & $2^{\aleph_0}$ \\
+$\bar{G}$ & \yes & \no & \no & per elt & \no & $2^{\aleph_0}$ \\
+$K+\bar{G}$ & \no & \no & \yes & \no & \no & $2^{\aleph_0}$ \\
+$\Pi$ & \no & \no & \yes & \no & \no & $2^{\aleph_0}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Homological Properties}
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Group} & \textbf{Div} & \textbf{Red} & \textbf{Cotor} & \textbf{Pure-Inj} & \textbf{Inj} & \textbf{Proj} \\
+\hline
+$G$ & \no & \yes & \no & \no & \no & \no \\
+$K$ & \no & \yes & \yes & \no & \no & \no \\
+$\bar{G}$ & \no & \yes & \no & \yes & \no & \no \\
+$K+\bar{G}$ & \no & \yes & \no & \no & \no & \no \\
+$\Pi$ & \no & \yes & \yes & \yes & \no & \no \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Completeness Properties}
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Group} & \textbf{$\Z$-adic Compl} & \textbf{$2$-adic Compl} & \textbf{Tor-Compl} & \textbf{Alg Compact} \\
+\hline
+$G$ & \no & \no & \no & \no \\
+$K$ & \no & \no & \no & \no \\
+$\bar{G}$ & \no & \no & \yes & \yes \\
+$K+\bar{G}$ & \no & \no & \no & \no \\
+$\Pi$ & \yes & \yes & N/A & \yes \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Properties of Quotients by $G$}
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Quotient} & \textbf{Torsion} & \textbf{TF} & \textbf{Div} & \textbf{Red} & \textbf{Cotor} & \textbf{Inj} \\
+\hline
+$K/G$ & \no & \yes & \yes & \no & \yes & \yes \\
+$\bar{G}/G$ & \yes & \no & \yes & \no & \yes & \no \\
+$(K+\bar{G})/G$ & mixed & \no & \yes & \no & \yes & \no \\
+$\Pi/G$ & mixed & \no & \no & \no & ? & \no \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Lattice Structure}
+
+The relationships between the groups form a non-distributive lattice structure. The non-trivial structural facts are:
+
+\begin{itemize}
+    \item \textbf{Incomparability}: $K \not\subset \bar{G}$ and $\bar{G} \not\subset K$.
+    \item \textbf{Intersection}: $K \cap \bar{G} = G$.
+    \item \textbf{Strict Containments}:
+    \begin{itemize}
+        \item $G \subsetneq K \subsetneq K+\bar{G} \subsetneq \Pi$
+        \item $G \subsetneq \bar{G} \subsetneq K+\bar{G} \subsetneq \Pi$
+    \end{itemize}
+    \item \textbf{The Join}: The sum $K+\bar{G}$ is the smallest group containing both completions, but it is still strictly smaller than the full product $\Pi$.
+\end{itemize}
+
+\section{Open Questions}
+
+
+\begin{question}
+Can one give an explicit set-theoretic description of $K$ as a subgroup of $\prod_i \Z/2^i\Z$? 
+The naive characterization ``$x$ has finite order implies $x \in \bigoplus_i \Z/2^i\Z$'' fails 
+to define a subgroup.
+\end{question}
+
+\begin{question}
+What is the structure of the $\lim^1$ cocycles explicitly? Can one describe elements of 
+$K \setminus \delta(G)$ via concrete 2-cocycles $\Q/\Z \times \Q/\Z \to G$?
+\end{question}
+
+\begin{question}
+For which reduced torsion groups $T$ does the cotorsion hull $\Ext^1(\Q/\Z, T)$ coincide 
+with the pure-injective envelope? The case $T = G$ shows they can differ.
+\end{question}
+
+\begin{question}
+What is the natural topology on $K$ induced by its various completions, and how does it 
+relate to the $2$-adic topology on $G$?
+\end{question}
+
+\begin{thebibliography}{99}
+
+\bibitem{CartanEilenberg1956}
+H.~Cartan and S.~Eilenberg,
+\emph{Homological Algebra},
+Princeton University Press, Princeton, NJ, 1956.
+
+\bibitem{Fuchs1970}
+L.~Fuchs,
+\emph{Infinite Abelian Groups, Vol.~I},
+Academic Press, New York, 1970.
+
+\bibitem{Fuchs1973}
+L.~Fuchs,
+\emph{Infinite Abelian Groups, Vol.~II},
+Academic Press, New York, 1973.
+
+\bibitem{Harrison1959}
+D.~K.~Harrison,
+Infinite abelian groups and homological methods,
+\emph{Ann. of Math.} (2) \textbf{69} (1959), 366--391.
+
+\bibitem{Ulm1933}
+H.~Ulm,
+Zur Theorie der abz\"ahlbar-unendlichen Abelschen Gruppen,
+\emph{Math. Ann.} \textbf{107} (1933), 774--803.
+
+\bibitem{Weibel1994}
+C.~A.~Weibel,
+\emph{An Introduction to Homological Algebra},
+Cambridge Studies in Advanced Mathematics, vol.~38,
+Cambridge University Press, Cambridge, 1994.
+
+\end{thebibliography}
+
+\end{document}

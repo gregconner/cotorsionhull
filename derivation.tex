@@ -1,0 +1,118 @@
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{The cotorsion hull of the sum of cyclic groups of order powers of 2 -- Gemini 3 version}
+\author{Antigravity Agent}
+\date{\today}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    In this note, we compute the group $\text{Ext}(H, G)$ where $G = \bigoplus_{i=1}^\infty \mathbb{Z}/2^i\mathbb{Z}$ and $H = \mathbb{Q}/\mathbb{Z}$. We verify that $\text{Ext}(H, G)$ is the cotorsion hull of $G$. We distinguish this group from the 2-adic completion of $G$ using Ulm invariants, showing that $\text{Ext}(H, G)$ is the unique reduced algebraically compact 2-primary group with Ulm invariants $f_n = 1$ for all $n$.
+\end{abstract}
+
+\section{Problem Statement}
+
+Let $G$ be the direct sum of cyclic groups of order $2^i$:
+\[
+G = \bigoplus_{i=1}^{\infty} \mathbb{Z}/2^i\mathbb{Z}
+\]
+Let $H$ be the quotient of the rationals by the integers:
+\[
+H = \mathbb{Q}/\mathbb{Z}
+\]
+We wish to compute the group $\text{Ext}(H, G)$. Throughout this document, $\text{Ext}$ denotes the first derived functor of Hom, i.e., $\text{Ext}^1_\mathbb{Z}$.
+
+\section{Preliminaries}
+
+We recall several standard results from the theory of abelian groups.
+
+\begin{definition}[Cotorsion Group]
+    An abelian group $C$ is called \textit{cotorsion} if $\text{Ext}(F, C) = 0$ for all torsion-free groups $F$. By a result of Harrison \cite{harrison1959}, it suffices to check this condition for $F = \mathbb{Q}$.
+\end{definition}
+
+\begin{definition}[Cotorsion Hull]
+    The \textit{cotorsion hull} (or cotorsion envelope) of an abelian group $A$ is a cotorsion group $A^\bullet$ containing $A$ such that $A^\bullet / A$ is torsion-free and divisible. It is unique up to isomorphism over $A$. Standard homological algebra identifies the cotorsion hull as:
+    \[
+    A^\bullet \cong \text{Ext}(\mathbb{Q}/\mathbb{Z}, A)
+    \]
+\end{definition}
+
+\section{Derivation}
+
+\subsection{Identification as the Cotorsion Hull}
+
+We compute $\text{Ext}(H, G) = \text{Ext}(\mathbb{Q}/\mathbb{Z}, G)$ using the standard short exact sequence:
+\[
+0 \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{Q}/\mathbb{Z} \to 0
+\]
+Applying the functor $\text{Hom}(-, G)$, we obtain the long exact sequence:
+\[
+\cdots \to \text{Hom}(\mathbb{Z}, G) \to \text{Ext}(\mathbb{Q}/\mathbb{Z}, G) \to \text{Ext}(\mathbb{Q}, G) \to \text{Ext}(\mathbb{Z}, G) \to 0
+\]
+Since $\mathbb{Z}$ is projective, $\text{Ext}(\mathbb{Z}, G) = 0$. Also, $\text{Hom}(\mathbb{Z}, G) \cong G$. Thus, we have the short exact sequence:
+\[
+0 \to G \to \text{Ext}(\mathbb{Q}/\mathbb{Z}, G) \to \text{Ext}(\mathbb{Q}, G) \to 0
+\]
+This sequence precisely characterizes $\text{Ext}(\mathbb{Q}/\mathbb{Z}, G)$ as an essential extension of $G$ by the torsion-free divisible group $\text{Ext}(\mathbb{Q}, G)$. This matches the definition of the cotorsion hull of $G$ \cite{fuchs2015}.
+
+\subsection{Torsion and Structure}
+
+Let $E = \text{Ext}(\mathbb{Q}/\mathbb{Z}, G)$.
+From the exact sequence, the quotient $E/G \cong \text{Ext}(\mathbb{Q}, G)$ is torsion-free (as it is a vector space over $\mathbb{Q}$).
+Therefore, the torsion subgroup of $E$, denoted $t(E)$, must be contained in $G$:
+\[
+t(E) = G
+\]
+This distinguishes $E$ from the 2-adic completion (the direct product), which contains torsion elements not in $G$.
+
+\subsection{Ulm Invariants}
+
+To uniquely identify the isomorphism class of $E$, we use Ulm invariants. Since $E$ is algebraically compact (being a cotorsion hull), it is determined by its Ulm invariants and its maximal divisible subgroup \cite{kaplansky1954}.
+
+Since $G$ is reduced, $E$ is also reduced.
+The Ulm invariants $f_n(A)$ of a p-group $A$ are defined as the dimension of the vector space $(p^n A)[p] / (p^{n+1} A)[p]$ over $\mathbb{Z}/p\mathbb{Z}$.
+For $G = \bigoplus_{i=1}^\infty \mathbb{Z}/2^i\mathbb{Z}$, the invariants are:
+\[
+f_n(G) = 1 \quad \text{for all } n \ge 0
+\]
+Since $G$ is pure in its cotorsion hull $E$ (actually $G$ is the torsion part of $E$), they share the same Ulm invariants:
+\[
+f_n(E) = 1 \quad \text{for all } n \ge 0
+\]
+In contrast, the direct product $P = \prod_{i=1}^\infty \mathbb{Z}/2^i\mathbb{Z}$ has invariants of cardinality $2^{\aleph_0}$.
+
+\section{Conclusion}
+
+The group $\text{Ext}(\mathbb{Q}/\mathbb{Z}, \bigoplus_{i=1}^\infty \mathbb{Z}/2^i\mathbb{Z})$ is the unique reduced algebraically compact 2-primary group with Ulm invariants $f_n = 1$ for all $n$. It is the cotorsion hull of $G$.
+
+\begin{thebibliography}{9}
+
+\bibitem{harrison1959}
+Harrison, D. K. (1959).
+Infinite Abelian Groups and Homological Methods.
+\textit{Annals of Mathematics}, 69(2), 366-391.
+
+\bibitem{fuchs2015}
+Fuchs, L. (2015).
+\textit{Abelian Groups}.
+Springer International Publishing.
+
+\bibitem{kaplansky1954}
+Kaplansky, I. (1954).
+\textit{Infinite Abelian Groups}.
+University of Michigan Press.
+
+\end{thebibliography}
+
+\end{document}

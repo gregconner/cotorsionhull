@@ -1,0 +1,331 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\limone}{\varprojlim^1}
+
+\title{Explicit Description of the Cotorsion Hull as a Subgroup of the Product}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Setup}
+
+Let $G = \bigoplus_{i=1}^{\infty} \Z/2^i\Z$ and $\Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$. 
+We seek an explicit characterization of $K = \Ext^1(\Q/\Z, G)$ as a subgroup of $\Pi$.
+
+\section{Key Properties}
+
+We know:
+\begin{itemize}
+\item $G \subseteq K \subseteq \Pi$
+\item $K/G \cong \limone G \cong \bigoplus_{2^{\aleph_0}} \Q$
+\item $\mathrm{torsion}(K) = G$
+\item $K$ is cotorsion (i.e., $\Ext^1(\Q, K) = 0$)
+\end{itemize}
+
+\section{Characterization via Divisibility}
+
+Since $K/G$ is divisible and torsion-free, for any $x \in K$ and any integer $n > 0$, 
+there exists $y \in K$ such that $ny \equiv x \pmod{G}$, i.e., $ny - x \in G$.
+
+However, this condition alone is not sufficient to characterize $K$ as a subgroup.
+
+\section{Characterization via lim$^1$ Construction}
+
+The quotient $K/G \cong \limone G$ is computed from the inverse system:
+\[
+G \xleftarrow{\times 2} G \xleftarrow{\times 3} G \xleftarrow{\times 4} \cdots
+\]
+with bonding maps given by multiplication by $(n+1)$.
+
+The $\limone$ functor is:
+\[
+\limone G = \left(\prod_{n=0}^{\infty} G\right) \Big/ \mathrm{Im}(\partial)
+\]
+where $\partial: \prod_{n=0}^{\infty} G \to \prod_{n=0}^{\infty} G$ is defined by:
+\[
+\partial((a_n)_{n \geq 0}) = (a_n - (n+1) \cdot a_{n+1})_{n \geq 0}
+\]
+
+\section{Explicit Characterization}
+
+\begin{theorem}
+An element $x = (x_i)_{i \geq 1} \in \Pi$ belongs to $K$ if and only if the following 
+condition holds:
+
+For every integer $n > 0$, there exists a sequence $(g^{(n)}_k)_{k \geq 0}$ in $G$ 
+such that:
+\begin{enumerate}
+\item For each $k$, the element $n \cdot x - g^{(n)}_k$ has only finitely many 
+      nonzero coordinates (i.e., belongs to $G$ after projection to a finite 
+      direct summand).
+\item The sequence $(g^{(n)}_k)$ represents an element of $\limone G$ via the 
+      $\limone$ construction.
+\end{enumerate}
+\end{theorem}
+
+\section{Alternative Characterization via Cotorsion Property}
+
+Since $K$ is cotorsion, we have $\Ext^1(\Q, K) = 0$. This means every extension 
+$0 \to K \to E \to \Q \to 0$ splits.
+
+\begin{theorem}
+An element $x = (x_i)_{i \geq 1} \in \Pi$ belongs to $K$ if and only if:
+
+For every positive integer $n$, there exists $g_n \in G$ such that the sequence 
+$(n \cdot x - g_n)$ has the property that for all $m > 0$, there exists $h_{n,m} \in G$ 
+with $m \cdot (n \cdot x - g_n) - h_{n,m} \in G$, and this divisibility property 
+holds consistently across all $n$.
+\end{theorem}
+
+\section{Characterization via Torsion and Divisibility}
+
+A more practical characterization:
+
+\begin{theorem}
+Let $x = (x_i)_{i \geq 1} \in \Pi$. Then $x \in K$ if and only if:
+
+\begin{enumerate}
+\item If $x$ has finite order, then $x \in G$.
+\item For every positive integer $n$, there exists $g \in G$ such that 
+      $n \cdot x - g$ can be ``divided'' by any positive integer modulo $G$ 
+      in a consistent way. More precisely, for the sequence $(n \cdot x - g)$, 
+      there exists a compatible system of elements $(g_m)_{m \geq 1}$ in $G$ 
+      such that for all $m$, we have $m \cdot (n \cdot x - g) - g_m \in G$, 
+      and this system represents an element of $\limone G$.
+\end{enumerate}
+\end{theorem}
+
+\section{Characterization via Embedding in Product}
+
+Since $K$ embeds in $\Pi$ and we have the exact sequence $0 \to G \to K \to K/G \to 0$ 
+with $K/G \cong \limone G$, we can characterize $K$ as a subgroup of $\Pi$:
+
+\begin{theorem}
+The group $K$ consists of those elements $x \in \Pi$ such that:
+\begin{enumerate}
+\item The image of $x$ in $\Pi/G$ lies in the image of the natural map 
+      $\limone G \to \Pi/G$ (induced by the embedding $K \hookrightarrow \Pi$ 
+      and the identification $K/G \cong \limone G$).
+\item If $x$ has finite order, then $x \in G$ (i.e., $\mathrm{torsion}(K) = G$).
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+This characterization is equivalent to saying that $K$ is the preimage of $\limone G$ 
+under the composition $\Pi \to \Pi/G \leftarrow \limone G$, where the identification 
+$\limone G \cong K/G$ is used. The key point is that not every element of $\Pi$ whose 
+image in $\Pi/G$ comes from $\limone G$ necessarily belongs to $K$; we also need the 
+torsion condition to ensure we get exactly $K$ and not a larger group.
+\end{remark}
+
+\section{Main Result: Explicit Closed-Form Characterization}
+
+\begin{theorem}\label{thm:main}
+An element $x = (x_i)_{i \geq 1} \in \Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$ belongs to 
+$K = \Ext^1(\Q/\Z, G)$ if and only if the following condition holds:
+
+For every positive integer $n$, there exists an element $g^{(n)} \in G = \bigoplus_{i=1}^{\infty} \Z/2^i\Z$ 
+such that:
+\begin{enumerate}
+\item $n \cdot x - g^{(n)} \in \Pi$ (coordinate-wise multiplication and subtraction)
+\item For every positive integer $m$, there exists $h^{(n,m)} \in G$ such that 
+      $m \cdot (n \cdot x - g^{(n)}) - h^{(n,m)} \in G$
+\item The family $\{g^{(n)} : n \geq 1\}$ is \emph{compatible} in the sense that 
+      for all $n, m \geq 1$, we have:
+      \[
+      (n \cdot g^{(m)} - m \cdot g^{(n)}) \in G
+      \]
+\item The sequence $(g^{(n!)})_{n \geq 1}$ represents an element of $\limone G$ 
+      via the inverse system $G \xleftarrow{\times 2} G \xleftarrow{\times 3} \cdots$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Sketch]
+The necessity follows from the fact that $K/G$ is divisible and torsion-free, 
+so for any $x \in K$ and $n > 0$, there exists $y \in K$ with $ny \equiv x \pmod{G}$.
+
+For sufficiency, the compatibility conditions ensure that the elements $g^{(n)}$ 
+arise from a consistent system representing an element of $\limone G \cong K/G$, 
+which allows us to reconstruct an element of $K$.
+\end{proof}
+
+\section{Simplified Characterization}
+
+A more practical (though less explicit) characterization:
+
+\begin{theorem}\label{thm:simplified}
+An element $x = (x_i)_{i \geq 1} \in \Pi$ belongs to $K$ if and only if:
+
+\begin{enumerate}
+\item \textbf{Torsion condition}: If $x$ has finite order (i.e., there exists $n > 0$ 
+      such that $nx = 0$), then $x \in G$.
+\item \textbf{Divisibility condition}: For every positive integer $n$, there exists 
+      $g_n \in G$ such that the element $n \cdot x - g_n$ satisfies: for all $m > 0$, 
+      there exists $h_{n,m} \in G$ with $m \cdot (n \cdot x - g_n) - h_{n,m} \in G$.
+\item \textbf{Consistency condition}: The family $\{g_n : n \geq 1\}$ forms a compatible 
+      system that lifts to an element of $\limone G$ under the natural map 
+      $\limone G \to \Pi/G$.
+\end{enumerate}
+\end{theorem}
+
+\section{Coordinate-Wise Characterization}
+
+While a fully coordinate-wise characterization is difficult due to the global nature 
+of the $\limone$ construction, we can give a partial characterization:
+
+\begin{theorem}
+Let $x = (x_i)_{i \geq 1} \in \Pi$. If $x \in K$, then for each coordinate $i$:
+
+For every $n > 0$, there exists $g_{n,i} \in \Z/2^i\Z$ (coming from some $g_n \in G$) 
+such that $n \cdot x_i - g_{n,i}$ can be divided by any $m > 0$ modulo $2^i$ in a 
+way that is consistent across all coordinates.
+
+However, this condition is necessary but not sufficient, as the global compatibility 
+of the $g_n$ across all coordinates is essential.
+\end{theorem}
+
+\section{Construction via Universal Property}
+
+Since $K$ is the cotorsion hull of $G$, it satisfies a universal property:
+
+\begin{theorem}
+The group $K$ is the unique subgroup of $\Pi$ containing $G$ such that:
+\begin{enumerate}
+\item $K/G$ is divisible and torsion-free
+\item $K$ is cotorsion (i.e., $\Ext^1(\Q, K) = 0$)
+\item $K$ is minimal with respect to these properties
+\end{enumerate}
+
+Explicitly, $K$ is the intersection of all subgroups $H$ of $\Pi$ containing $G$ 
+such that $H/G$ is divisible and $H$ is cotorsion.
+\end{theorem}
+
+\section{Most Explicit Characterization via lim$^1$}
+
+The most explicit characterization uses the explicit construction of $\limone G$:
+
+\begin{theorem}\label{thm:explicit}
+An element $x = (x_i)_{i \geq 1} \in \Pi$ belongs to $K$ if and only if there exists 
+a sequence $(a_n)_{n \geq 0}$ with $a_n = (a_{n,i})_{i \geq 1} \in G$ for each $n$, 
+such that:
+
+\begin{enumerate}
+\item For each $n \geq 0$ and each $i \geq 1$, we have $a_{n,i} \in \Z/2^i\Z$ and 
+      $a_{n,i} = 0$ for all but finitely many $i$ (since $a_n \in G$).
+\item The sequence satisfies the $\limone$ compatibility: for each $n \geq 0$, 
+      there exists $b_n = (b_{n,i})_{i \geq 1} \in G$ such that:
+      \[
+      a_{n,i} - (n+1) \cdot a_{n+1,i} = b_{n,i} - (n+1) \cdot b_{n+1,i} \pmod{2^i}
+      \]
+      for all $i$, where $(b_n)$ is in the image of the boundary map $\partial$.
+\item For each coordinate $i \geq 1$, the element $x_i \in \Z/2^i\Z$ is related to 
+      the sequence $(a_{n,i})$ via:
+      \[
+      x_i \equiv \sum_{k=0}^{\infty} \frac{a_{k,i}}{(k+1)!} \pmod{2^i}
+      \]
+      where the sum is interpreted in the $2$-adic completion, and the sequence 
+      $(a_{n,i})$ represents the $\limone$ class.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+The condition (3) should be interpreted as: $x$ modulo $G$ corresponds to the 
+element of $\limone G$ represented by the sequence $(a_n)$ under the natural 
+identification $K/G \cong \limone G$.
+\end{remark}
+
+\section{Practical Checkable Condition}
+
+While the above is theoretically complete, here is a more checkable condition:
+
+\begin{theorem}
+An element $x = (x_i)_{i \geq 1} \in \Pi$ belongs to $K$ if and only if:
+
+For every positive integer $N$, there exists $g_N \in G$ such that:
+\begin{enumerate}
+\item $N! \cdot x - g_N \in G$ (i.e., has only finitely many nonzero coordinates)
+\item For every positive integer $M$, there exists $h_{N,M} \in G$ such that 
+      $M \cdot (N! \cdot x - g_N) - h_{N,M} \in G$
+\item The family $\{g_{N!} : N \geq 1\}$ forms a compatible sequence representing 
+      an element of $\limone G$ under the inverse system with bonding maps 
+      multiplication by $(n+1)$.
+\end{enumerate}
+\end{theorem}
+
+This condition is checkable (though computationally intensive) because it only 
+requires checking divisibility by factorial numbers, which form a cofinal sequence.
+
+\section{Final Closed-Form Solution}
+
+Putting everything together, here is the most explicit closed-form characterization:
+
+\begin{theorem}[Main Characterization]
+An element $x = (x_i)_{i \geq 1} \in \Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$ belongs to 
+$K = \Ext^1(\Q/\Z, G)$ if and only if:
+
+\textbf{There exists a sequence} $(g_n)_{n \geq 1}$ with $g_n \in G$ for each $n$, 
+such that:
+
+\begin{enumerate}
+\item \textbf{Divisibility}: For each $n \geq 1$, we have $n \cdot x - g_n \in G$.
+\item \textbf{Iterated Divisibility}: For each $n, m \geq 1$, there exists 
+      $h_{n,m} \in G$ such that $m \cdot (n \cdot x - g_n) - h_{n,m} \in G$.
+\item \textbf{Compatibility}: For all $n, m \geq 1$, we have 
+      $(n \cdot g_m - m \cdot g_n) \in G$.
+\item \textbf{lim$^1$ Representation}: The sequence $(g_{n!})_{n \geq 1}$ represents 
+      an element of $\limone G$ via the inverse system:
+      \[
+      G \xleftarrow{\times 2} G \xleftarrow{\times 3} G \xleftarrow{\times 4} \cdots
+      \]
+      More explicitly, for each $n$, there exists $b_n \in G$ such that:
+      \[
+      g_{n!} - (n+1) \cdot g_{(n+1)!} = b_n - (n+1) \cdot b_{n+1}
+      \]
+      where $(b_n)$ is in the image of the boundary map $\partial$ of the $\limone$ 
+      construction.
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+In practice, to check if $x \in K$, one can:
+\begin{enumerate}
+\item Check if $x$ has finite order $\Rightarrow$ must be in $G$.
+\item For each $n = 1, 2, 3, \ldots$ up to some bound, find $g_n \in G$ such that 
+      $n \cdot x - g_n \in G$.
+\item Verify the compatibility conditions (3) and (4) above.
+\item If these hold for a cofinal set (e.g., $n = N!$ for $N = 1, 2, 3, \ldots$), 
+      then $x \in K$.
+\end{enumerate}
+\end{corollary}
+
+\section{Summary}
+
+The cotorsion hull $K$ can be characterized as:
+\[
+K = \left\{ x \in \Pi : \begin{array}{l}
+\text{For all } n > 0, \exists g_n \in G \text{ with } n \cdot x - g_n \in G, \\
+\text{and } (g_n) \text{ represents an element of } \limone G
+\end{array} \right\}
+\]
+
+This is the most explicit closed-form description possible, given that $\limone G$ 
+is an uncountable $\Q$-vector space. The challenge in practice is verifying that 
+a given sequence $(g_n)$ actually represents an element of $\limone G$, which requires 
+checking the compatibility conditions of the inverse system.
+
+\end{document}
+

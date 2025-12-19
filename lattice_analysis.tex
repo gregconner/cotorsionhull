@@ -1,0 +1,243 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{hyperref}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{array}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\yes}{\checkmark}
+\newcommand{\no}{$\times$}
+
+\title{Complete Lattice Analysis:\\Groups and Their Properties}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{The Lattice Structure}
+
+All groups embed into $\Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$. The containment lattice is:
+
+\begin{center}
+\begin{tabular}{c}
+$\Pi = \prod_i \Z/2^i\Z$ \\[2pt]
+$|$ \\[2pt]
+$K + \bar{G}$ \\[2pt]
+$\diagup \quad \diagdown$ \\[2pt]
+$K \qquad\qquad \bar{G}$ \\[2pt]
+$\diagdown \quad \diagup$ \\[2pt]
+$G = \bigoplus_i \Z/2^i\Z$ \\[2pt]
+$|$ \\[2pt]
+$0$
+\end{tabular}
+\end{center}
+
+\noindent\textbf{Notation:}
+\begin{itemize}
+\item $G = \bigoplus_{i=1}^{\infty} \Z/2^i\Z$ (direct sum of cyclic 2-groups)
+\item $K = \Ext^1(\Q/\Z, G)$ (cotorsion hull)
+\item $\bar{G} = \{(a_i) \in \Pi : \exists k,\, 2^k a_i = 0 \;\forall i\}$ (torsion-complete group)
+\item $\Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$ (full product)
+\end{itemize}
+
+\section{Properties of Base Groups}
+
+\subsection{Structural Properties}
+
+\begin{center}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Group} & \textbf{Torsion} & \textbf{Torsion-Free} & \textbf{Mixed} & \textbf{Bounded} & \textbf{Countable} \\
+\hline
+$G$ & \yes & \no & \no & \no & \yes \\
+$K$ & \no & \no & \yes & \no & \no \\
+$\bar{G}$ & \yes & \no & \no & per elt & \no \\
+$K+\bar{G}$ & \no & \no & \yes & \no & \no \\
+$\Pi$ & \no & \no & \yes & \no & \no \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Homological Properties}
+
+\begin{center}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Group} & \textbf{Divisible} & \textbf{Reduced} & \textbf{Cotorsion} & \textbf{Pure-Inj} & \textbf{Injective} & \textbf{Projective} \\
+\hline
+$G$ & \no & \yes & \no & \no & \no & \no \\
+$K$ & \no & \yes & \yes & \no & \no & \no \\
+$\bar{G}$ & \no & \yes & \yes & \yes & \no & \no \\
+$K+\bar{G}$ & \no & \yes & ? & \no & \no & \no \\
+$\Pi$ & \no & \yes & \yes & \yes & \no & \no \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Completeness Properties}
+
+\begin{center}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Group} & \textbf{$\Z$-adic Complete} & \textbf{$2$-adic Complete} & \textbf{Torsion-Complete} & \textbf{Alg.\ Compact} \\
+\hline
+$G$ & \no & \no & \no & \no \\
+$K$ & \no & \no & \no & \no \\
+$\bar{G}$ & \yes & \yes & \yes & \yes \\
+$K+\bar{G}$ & \no & \no & \no & \no \\
+$\Pi$ & \yes & \yes & N/A & \yes \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Additional Invariants}
+
+\begin{center}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Group} & \textbf{Torsion Subgroup} & \textbf{TF Rank} & \textbf{Adjusted Cotorsion} & \textbf{Cardinality} \\
+\hline
+$G$ & $G$ & $0$ & N/A & $\aleph_0$ \\
+$K$ & $G$ & $2^{\aleph_0}$ & \yes & $2^{\aleph_0}$ \\
+$\bar{G}$ & $\bar{G}$ & $0$ & N/A & $2^{\aleph_0}$ \\
+$K+\bar{G}$ & $\bar{G}$ & $2^{\aleph_0}$ & \no & $2^{\aleph_0}$ \\
+$\Pi$ & $\bar{G}$ & $2^{\aleph_0}$ & \no & $2^{\aleph_0}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Properties of All Quotients}
+
+\subsection{Quotients by $G$}
+
+\begin{center}
+\begin{tabular}{lccccccc}
+\hline
+\textbf{Quotient} & \textbf{Torsion} & \textbf{TF} & \textbf{Div} & \textbf{Red} & \textbf{Cotor} & \textbf{Pure-Inj} & \textbf{Inj} \\
+\hline
+$K/G$ & \no & \yes & \yes & \no & \yes & \no & \yes \\
+$\bar{G}/G$ & \yes & \no & \no & \yes & \yes & \yes & \no \\
+$(K+\bar{G})/G$ & mixed & \no & \no & \yes & ? & \no & \no \\
+$\Pi/G$ & mixed & \no & \no & \yes & ? & \no & \no \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent\textbf{Key fact:} $K/G \cong \Ext^1(\Q, G) \cong \lim^1 G$ is a $\Q$-vector space of dimension $2^{\aleph_0}$.
+
+\subsection{Quotients by $K$}
+
+\begin{center}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Quotient} & \textbf{Torsion} & \textbf{TF} & \textbf{Div} & \textbf{Red} & \textbf{Cotor} & \textbf{Pure-Inj} \\
+\hline
+$(K+\bar{G})/K \cong \bar{G}/G$ & \yes & \no & \no & \yes & \yes & \yes \\
+$\Pi/K$ & mixed & \no & \no & \yes & ? & \no \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Quotients by $\bar{G}$}
+
+\begin{center}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Quotient} & \textbf{Torsion} & \textbf{TF} & \textbf{Div} & \textbf{Red} & \textbf{Cotor} & \textbf{Pure-Inj} \\
+\hline
+$(K+\bar{G})/\bar{G} \cong K/G$ & \no & \yes & \yes & \no & \yes & \no \\
+$\Pi/\bar{G}$ & \no & \yes & \no & \yes & ? & \no \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Quotient by $K+\bar{G}$}
+
+\begin{center}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Quotient} & \textbf{Torsion} & \textbf{TF} & \textbf{Div} & \textbf{Red} & \textbf{Cotor} & \textbf{Pure-Inj} \\
+\hline
+$\Pi/(K+\bar{G})$ & \no & \yes & \no & \yes & ? & \no \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Complete Quotient Matrix}
+
+Every quotient $A/B$ where $B \subseteq A$:
+
+\begin{center}
+\begin{tabular}{l|ccccc}
+$A \big\backslash B$ & $G$ & $K$ & $\bar{G}$ & $K+\bar{G}$ & $\Pi$ \\
+\hline
+$G$ & $0$ & --- & --- & --- & --- \\
+$K$ & $K/G$ & $0$ & --- & --- & --- \\
+$\bar{G}$ & $\bar{G}/G$ & --- & $0$ & --- & --- \\
+$K+\bar{G}$ & $(K+\bar{G})/G$ & $\bar{G}/G$ & $K/G$ & $0$ & --- \\
+$\Pi$ & $\Pi/G$ & $\Pi/K$ & $\Pi/\bar{G}$ & $\Pi/(K+\bar{G})$ & $0$ \\
+\end{tabular}
+\end{center}
+
+\section{Intersection and Join Tables}
+
+\subsection{Intersections (Meets)}
+
+\begin{center}
+\begin{tabular}{l|ccccc}
+$A \cap B$ & $G$ & $K$ & $\bar{G}$ & $K+\bar{G}$ & $\Pi$ \\
+\hline
+$G$ & $G$ & $G$ & $G$ & $G$ & $G$ \\
+$K$ & $G$ & $K$ & $G$ & $K$ & $K$ \\
+$\bar{G}$ & $G$ & $G$ & $\bar{G}$ & $\bar{G}$ & $\bar{G}$ \\
+$K+\bar{G}$ & $G$ & $K$ & $\bar{G}$ & $K+\bar{G}$ & $K+\bar{G}$ \\
+$\Pi$ & $G$ & $K$ & $\bar{G}$ & $K+\bar{G}$ & $\Pi$ \\
+\end{tabular}
+\end{center}
+
+\noindent\textbf{Key fact:} $K \cap \bar{G} = G$ (cotorsion hull and pure-injective envelope intersect at original group).
+
+\subsection{Sums (Joins)}
+
+\begin{center}
+\begin{tabular}{l|ccccc}
+$A + B$ & $G$ & $K$ & $\bar{G}$ & $K+\bar{G}$ & $\Pi$ \\
+\hline
+$G$ & $G$ & $K$ & $\bar{G}$ & $K+\bar{G}$ & $\Pi$ \\
+$K$ & $K$ & $K$ & $K+\bar{G}$ & $K+\bar{G}$ & $\Pi$ \\
+$\bar{G}$ & $\bar{G}$ & $K+\bar{G}$ & $\bar{G}$ & $K+\bar{G}$ & $\Pi$ \\
+$K+\bar{G}$ & $K+\bar{G}$ & $K+\bar{G}$ & $K+\bar{G}$ & $K+\bar{G}$ & $\Pi$ \\
+$\Pi$ & $\Pi$ & $\Pi$ & $\Pi$ & $\Pi$ & $\Pi$ \\
+\end{tabular}
+\end{center}
+
+\section{Ulm Invariants}
+
+For the torsion subgroups:
+
+\begin{center}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Group} & $u_0$ & $u_1$ & $u_2$ & $\cdots$ & \textbf{Length} \\
+\hline
+$G = \text{torsion}(K)$ & $\aleph_0$ & $0$ & $0$ & $0$ & $1$ \\
+$\bar{G} = \text{torsion}(\Pi)$ & $2^{\aleph_0}$ & $2^{\aleph_0}$ & $2^{\aleph_0}$ & $\cdots$ & $\omega$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Key Structural Results}
+
+\begin{enumerate}
+\item $K \cap \bar{G} = G$ (incomparable in containment)
+\item $(K+\bar{G})/G \cong K/G \oplus \bar{G}/G$ (direct sum since one is TF, other is torsion)
+\item $K/G \hookrightarrow \Pi/\bar{G}$ is the maximal divisible subgroup
+\item $\Pi/(K+\bar{G}) = (\Pi/\bar{G})/(K/G)$ is reduced torsion-free
+\end{enumerate}
+
+\end{document}
