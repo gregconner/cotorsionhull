@@ -72,19 +72,16 @@ in the way that elements of $K/G$ must.
 To verify this, define the sequence $\hat{g}_n = g_{n!}$ for $n \geq 1$, which extracts 
 the factorial subsequence of remainders. The requirement is that the ``gaps'' or 
 ``jumps'' between consecutive terms follow a specific pattern. More precisely, 
-there exists a sequence $(h_n)_{n \geq 1}$ with $h_n \in G$ and a sequence $(d_n)_{n \geq 1}$ 
-with $d_n \in \Pi$ such that:
-\begin{enumerate}
-\item $d_n = \hat{g}_n - h_n$ for all $n \geq 1$
-\item $d_n = (n+1) \cdot d_{n+1}$ for all $n \geq 1$ (equivalently, $d_1 = n! \cdot d_n$ for all $n$)
-\end{enumerate}
-
-\textbf{Why $d_n \in \Pi$:} Since $d_1 = n! \cdot d_n$ for all $n$, the element $d_1$ 
-must be divisible by $n!$ for all $n$. This is not possible in $G$ (a direct sum 
-of cyclic 2-groups), so $d_n$ must lie in the larger group $\Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$.
-The condition $d_n = \hat{g}_n - h_n$ means that $d_n$ is congruent to an element of $G$ 
-(modulo the natural embedding), but $d_n$ itself must be in $\Pi$ to satisfy the 
-divisibility condition $d_n = (n+1) \cdot d_{n+1}$.
+for each $n \geq 1$, there must exist some $h_n \in G$ such that:
+\[
+\hat{g}_n - (n+1) \cdot \hat{g}_{n+1} = h_n - (n+1) \cdot h_{n+1}
+\]
+Equivalently, rearranging terms:
+\[
+\hat{g}_n - h_n = (n+1) \cdot (\hat{g}_{n+1} - h_{n+1})
+\]
+where the equality holds in $\Pi$ (viewing the differences as elements of $\Pi$ where 
+divisibility by $(n+1)$ is possible, even though $\hat{g}_n - h_n \in G$).
 
 \textbf{What this means:} The quotient $K/G$ has a very specific structure (called 
 $\limone G$). This condition ensures that our sequence of remainders actually 
@@ -100,12 +97,12 @@ An element $x = (x_i)_{i \geq 1} \in \Pi$ belongs to $K$ if and only if:
 \item The remainders $(g_n)$ are compatible: $n \cdot g_m - m \cdot g_n \in G$ 
       for all $n, m \geq 1$.
 \item Define $\hat{g}_n = g_{n!}$ for $n \geq 1$. There exists a sequence 
-      $(h_n)_{n \geq 1}$ with $h_n \in G$ and a sequence $(d_n)_{n \geq 1}$ with $d_n \in \Pi$ 
-      such that:
-      \begin{enumerate}
-      \item $d_n = \hat{g}_n - h_n$ for all $n \geq 1$
-      \item $d_n = (n+1) \cdot d_{n+1}$ for all $n \geq 1$ (equivalently, $d_1 = n! \cdot d_n$ for all $n$)
-      \end{enumerate}
+      $(h_n)_{n \geq 1}$ with $h_n \in G$ such that:
+      \[
+      \hat{g}_n - h_n = (n+1) \cdot (\hat{g}_{n+1} - h_{n+1})
+      \]
+      where the equality holds in $\Pi$ (the differences $\hat{g}_n - h_n$ are 
+      viewed as elements of $\Pi$ where divisibility by $(n+1)$ is possible).
       
       This ensures the sequence $(\hat{g}_n)$ represents a well-defined element in 
       $\limone G = (\prod_{n=0}^{\infty} G) / \mathrm{Im}(\partial)$, 
@@ -134,4 +131,3 @@ which implies $x \in K$.
 \end{proof}
 
 \end{document}
-
