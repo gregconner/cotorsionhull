@@ -1,0 +1,131 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\limone}{\varprojlim^1}
+
+\title{Explicit Description of the Cotorsion Hull}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+Let $G = \bigoplus_{i=1}^{\infty} \Z/2^i\Z$ and $\Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$. 
+Define $K = \Ext^1(\Q/\Z, G)$, the cotorsion hull of $G$.
+
+Our goal is to characterize exactly which elements of $\Pi$ belong to $K$. 
+We do this by building up three conditions, each refining the previous one.
+
+\begin{definition}
+For $x \in \Pi$ and a positive integer $n$, we say $x$ is \emph{$n$-divisible modulo $G$} 
+if we can ``almost divide $x$ by $n$'' in the following sense: there exists some element 
+$g \in G$ such that when we compute $n \cdot x - g$, the result lies entirely in $G$ 
+(has only finitely many nonzero coordinates). 
+
+We call $g$ an \emph{$n$-remainder} of $x$.
+\end{definition}
+
+The first condition requires that $x$ can be divided by \emph{every} positive integer (modulo $G$):
+
+\begin{proposition}[Condition 1: Universal Divisibility]
+An element $x \in \Pi$ belongs to $K$ only if $x$ is $n$-divisible modulo $G$ for every 
+$n \geq 1$. That is, for each $n$, there exists $g_n \in G$ with $n \cdot x - g_n \in G$.
+\end{proposition}
+
+However, this alone is not sufficient. We need the remainders to be \emph{compatible}:
+
+\begin{proposition}[Condition 2: Compatibility of Remainders]
+The remainders we choose for different divisors must be \emph{compatible} with each other. 
+Specifically, if we have an $n$-remainder $g_n$ and an $m$-remainder $g_m$, they must satisfy:
+\[
+n \cdot g_m - m \cdot g_n \in G
+\]
+for all positive integers $n$ and $m$.
+
+\textbf{Why this matters:} Think of dividing $x$ by $nm$ in two different ways:
+\begin{itemize}
+\item First divide by $n$ (getting remainder $g_n$), then divide that result by $m$
+\item First divide by $m$ (getting remainder $g_m$), then divide that result by $n$
+\end{itemize}
+These two procedures should give the same final answer (modulo $G$). The compatibility 
+condition ensures this consistency.
+\end{proposition}
+
+The final condition ensures these compatible remainders don't just exist arbitrarily, 
+but actually come from the mathematical structure of $K/G \cong \limone G$:
+
+\begin{proposition}[Condition 3: lim$^1$ Compatibility]
+Even if remainders are compatible (satisfying Condition 2), they might not correspond 
+to a real element of $K$. We need one more check to ensure they ``fit together'' 
+in the way that elements of $K/G$ must.
+
+To verify this, define the sequence $\hat{g}_n = g_{n!}$ for $n \geq 1$, which extracts 
+the factorial subsequence of remainders. The requirement is that there exists 
+a sequence $l = (l_n)_{n \geq 1}$ with $l_n \in \Pi$ such that:
+\begin{enumerate}
+\item $l_n = (n+1) \cdot l_{n+1}$ for all $n \geq 1$ (equivalently, $l_1 = n! \cdot l_n$ for all $n$)
+\item $\hat{g}_n - l_n \in G$ for all $n \geq 1$
+\end{enumerate}
+
+\textbf{Why $l_n \in \Pi$:} Since $l_1 = n! \cdot l_n$ for all $n$, the element $l_1$ 
+must be divisible by $n!$ for all $n$. This is not possible in $G$ (a direct sum 
+of cyclic 2-groups), so $l_n$ must lie in the larger group $\Pi = \prod_{i=1}^{\infty} \Z/2^i\Z$.
+
+\textbf{What this means:} The quotient $K/G$ has a very specific structure (called 
+$\limone G$). This condition ensures that our sequence of remainders actually 
+represents a valid element in that structure, not just any arbitrary compatible 
+sequence.
+\end{proposition}
+
+\begin{theorem}
+An element $x = (x_i)_{i \geq 1} \in \Pi$ belongs to $K$ if and only if:
+\begin{enumerate}
+\item $x$ is $n$-divisible modulo $G$ for every $n \geq 1$ (with some choice of 
+      $n$-remainders $g_n \in G$).
+\item The remainders $(g_n)$ are compatible: $n \cdot g_m - m \cdot g_n \in G$ 
+      for all $n, m \geq 1$.
+\item Define $\hat{g}_n = g_{n!}$ for $n \geq 1$. There exists a sequence 
+      $l = (l_n)_{n \geq 1}$ with $l_n \in \Pi$ such that:
+      \begin{enumerate}
+      \item $l_n = (n+1) \cdot l_{n+1}$ for all $n \geq 1$ (equivalently, $l_1 = n! \cdot l_n$ for all $n$)
+      \item $\hat{g}_n - l_n \in G$ for all $n \geq 1$
+      \end{enumerate}
+      
+      This ensures the sequence $(\hat{g}_n)$ represents a well-defined element in 
+      $\limone G = (\prod_{n=0}^{\infty} G) / \mathrm{Im}(\partial)$, 
+      where $\partial((a_n)) = (a_n - (n+1) \cdot a_{n+1})$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{Why these conditions are necessary:} 
+If $x \in K$, then $x \bmod G$ is an element of $K/G$. Since $K/G \cong \limone G$ 
+is divisible (every element can be divided by any positive integer), for each $n \geq 1$, 
+there exists some $y \in K$ such that $n \cdot y \equiv x \pmod{G}$. 
+Setting $g_n = n \cdot y - x \in G$ gives us condition (1).
+
+The compatibility condition (2) must hold because if we divide $x$ by $nm$ in two 
+different orders, we must get the same result. 
+
+Condition (3) ensures that the sequence $(\hat{g}_n) = (g_{n!})$ actually represents 
+the correct element of $\limone G$ that corresponds to $x \bmod G$.
+
+\textbf{Why these conditions are sufficient:} 
+If $x \in \Pi$ satisfies all three conditions, then the remainders $(g_n)$ form a 
+compatible system that represents a well-defined element of $\limone G$. 
+Since $K/G \cong \limone G$, this means $x \bmod G$ corresponds to an element of $K/G$, 
+which implies $x \in K$.
+\end{proof}
+
+\end{document}
+
